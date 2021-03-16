@@ -11,7 +11,8 @@ export default new Vuex.Store({
             {id: 3, text: 'Normal', color: '#800080'},
             {id: 4, text: 'Not Important', color: '#808080'},
             {id: 5, text: 'Meeting', color: '#0000FF'}
-        ]
+        ],
+        meetingEvents: []
     },
     mutations: {
         addMeetingType(state, data) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
         deleteMeetingType(state, data) {
             state.meetingTypeList = data;
         },
+        addMeetingEvent(state, data){
+            state.meetingEvents.push(data);
+        }
     },
     actions: {},
     modules: {}
