@@ -36,14 +36,8 @@
             <div v-for="(item) in $store.state.meetingTypeList" :key="item.id">
 
               <v-list-item>
-                <v-list>
-                  <v-btn icon>
-                    <v-icon :color='item.color'>mdi-palette-outline</v-icon>
-                  </v-btn>
-                </v-list>
-                <v-list-item-content>
                   <v-list-item-title v-text="item.text"></v-list-item-title>
-                </v-list-item-content>
+                  <v-icon :color='item.color'>mdi-palette-outline</v-icon>
                 <v-list-item-action>
                   <v-btn icon @click="deleteMeet(item.id)">
                     <v-icon :color='item.color'>mdi-delete</v-icon>
@@ -59,12 +53,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="close">
-          Close
-        </v-btn>
-        <v-btn color="blue darken-1" text @click="close">
-          Save
-        </v-btn>
+        <v-btn color="blue darken-1" text @click="close"> Close </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -95,7 +84,6 @@ export default {
 
       this.$store.state.meetingTypeList.find(item => item.text === this.name) !== undefined ? this.addMeetingTypeStatus.push('Name must be unique') : undefined;
       this.$store.state.meetingTypeList.find(item => item.color === this.color) !== undefined ? this.addMeetingTypeStatus.push('Color must be unique') : undefined;
-
 
       if (this.addMeetingTypeStatus.length === 0 && !this.$v.$invalid) {
         this.$store.commit('addMeetingType', {id: Date.now(), text: this.name, color: this.color});
