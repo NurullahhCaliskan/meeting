@@ -6,29 +6,29 @@
       </v-card-title>
       <v-card-text :class="{ 'form-group--error': $v.name.$error }">
         <v-container>
-          <v-row>
             <v-col cols="12">
               <v-text-field v-model.trim="$v.name.$model" label="Meeting Type Name" required hint="For example: Important, Emergency ...">
 
               </v-text-field>
               <v-chip class="error" v-if="addNewMeetingType && !$v.name.required">Field is required</v-chip>
+
               <v-chip class="error" v-if="addNewMeetingType && !$v.name.minLength">Name must have at least {{ $v.name.$params.minLength.min }} letters.</v-chip>
+              <label class="d-flex justify-center"> Select meeting datetime*</label>
             </v-col>
             <v-col cols="12">
-              <label> Select meeting datetime*</label>
+
               <v-color-picker v-model="color">
               </v-color-picker>
             </v-col>
             <v-col cols="12">
-              <small>*indicates required field</small>
+              <small class="form-gro">*indicates required field</small>
             </v-col>
-            <v-col cols="12">
-              <v-btn class="align-content-lg-center" text color="red" @click="save">
+            <v-col cols="12 d-flex justify-center">
+              <v-btn  text color="red" @click="save">
                 Add
               </v-btn>
             </v-col>
             <v-chip class="error" v-for="(item,index) in addMeetingTypeStatus" :key="index">{{ item }}</v-chip>
-          </v-row>
         </v-container>
         <!-- List meeting type-->
         <v-card>
