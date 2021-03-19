@@ -7,7 +7,6 @@
         </v-card-title>
         <v-card-text>
           <v-container>
-            <v-row>
               <v-col cols="12">
                 <v-text-field v-model.trim="$v.header.$model"
                               label="Meeting Header*"
@@ -19,7 +18,8 @@
 
               </v-col>
               <v-col cols="12">
-                <label> Select meeting datetime*</label>
+                <label class="d-flex justify-center"> Select meeting datetime*</label>
+                <div class="d-flex justify-center">
                 <el-date-picker
                     range-separator="-"
                     clearable
@@ -29,6 +29,7 @@
                     end-placeholder="End Date"
                     :default-time="['12:00:00']">
                 </el-date-picker>
+                </div>
                 <br>
                 <v-chip class="error" v-if="addNewMeeting && !validDate()">Please select date.</v-chip>
 
@@ -53,7 +54,6 @@
                   </v-list>
                 </v-card>
               </v-col>
-            </v-row>
           </v-container>
           <small>*indicates required field</small>
         </v-card-text>
